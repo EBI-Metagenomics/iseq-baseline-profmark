@@ -1,4 +1,6 @@
 import configparser
+import errno
+import os
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
@@ -33,3 +35,7 @@ class Label:
 
 
 label = Label()
+
+
+if not Path(root_dir).exists():
+    raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), root_dir)
