@@ -19,20 +19,16 @@ XRANGE = [-0.05, 1.05]
 YRANGE = [-0.05, 1.05]
 NBINS = 100
 
-HOVER_DATA = {
-    "pr": [config.label.auc, "domain", config.label.hmmer_hits, "e-value"],
-    "auc": [config.label.auc, "domain", config.label.hmmer_hits],
-}
-
 
 def plot_pr_curve_per_organism(df: DataFrame) -> Figure:
+    # df = df[df[config.label.precision] > 0].reset_index(drop=True)
     fig = px.line(
         df,
         x=config.label.recall,
         y=config.label.precision,
         color="domain",
         line_group="organism",
-        hover_data=HOVER_DATA["pr"],
+        hover_data=[config.label.auc, "domain", config.label.hmmer_hits, "e-value"],
         hover_name="organism",
         title="Precision-Recall curves, organism-wise",
     )

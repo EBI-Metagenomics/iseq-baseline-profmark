@@ -49,6 +49,16 @@ def create_per_organism_df(root_dir: str, organisms: List[str], downsample: int)
         y = pr.precision[idx]
         evalues = evalues[idx]
 
+        arr = np.where(x > 0.005)[0]
+        if len(arr) == 0:
+            first = 0
+        else:
+            first = arr[0]
+
+        x = x[first:]
+        y = y[first:]
+        evalues = evalues[first:]
+
         matrix = lttb.downsample(np.stack((x, y), axis=1), n_out=downsample)
         idx = np.searchsorted(x, matrix[:, 0])
         x = matrix[:, 0]
