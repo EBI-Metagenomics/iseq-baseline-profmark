@@ -21,7 +21,6 @@ NBINS = 100
 
 
 def plot_pr_curve_per_organism(df: DataFrame) -> Figure:
-    # df = df[df[config.label.precision] > 0].reset_index(drop=True)
     fig = px.line(
         df,
         x=config.label.recall,
