@@ -1,11 +1,10 @@
 from typing import Optional
 
+import config
 import pandas as pd
 import plotly.express as px
 from pandas import DataFrame
 from plotly.graph_objs import Figure
-
-import config
 
 __all__ = [
     "plot_auc_dist",
