@@ -7,4 +7,4 @@ write_to = "iseq_prof_analysis/_version.py"
 
 [tool.isort]
 profile = "black"
-src_paths = ["iseq-prof-analysis"]
+src_paths = ["iseq_prof_analysis"]
