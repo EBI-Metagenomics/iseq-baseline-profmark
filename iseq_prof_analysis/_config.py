@@ -58,7 +58,15 @@ class Config:
 config = Config()
 
 
-def load_config(filepath: Path):
+def load_config(filepath: Optional[Path] = None):
+    if filepath is None:
+        root = Path(os.environ["XDG_CONFIG_HOME"])
+        filepath = root / "iseq-prof-analysis" / "config.cfg"
+
+    _load_config(filepath)
+
+
+def _load_config(filepath: Path):
     global config
 
     cfg = configparser.ConfigParser()
