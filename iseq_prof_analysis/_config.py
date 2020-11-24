@@ -58,12 +58,19 @@ class Config:
 config = Config()
 
 
-def load_config(filepath: Optional[Path] = None):
+def load_config(filepath: Optional[Path] = None, verbose=False):
     if filepath is None:
         root = Path(os.environ["XDG_CONFIG_HOME"])
         filepath = root / "iseq-prof-analysis" / "config.cfg"
 
+    if verbose:
+        print(f"Loading {filepath}.")
+
     _load_config(filepath)
+
+    if verbose:
+        print(config.baseline)
+        print(config.chlamydia)
 
 
 def _load_config(filepath: Path):
