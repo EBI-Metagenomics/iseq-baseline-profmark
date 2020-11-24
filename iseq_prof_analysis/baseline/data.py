@@ -1,13 +1,14 @@
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-import config
 import lttb
 import numpy as np
 import pandas as pd
 from diskcache import FanoutCache
 from iseq_prof import ConfusionMatrix, OrganismResult, Profiling, pfam
 from tqdm import tqdm
+
+from .._config import config
 
 size_limit = 250 * 1024 ** 3
 timeout = 10 * 60
